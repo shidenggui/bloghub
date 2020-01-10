@@ -1,0 +1,56 @@
+scalar DateTime
+
+interface Response {
+    code: String!
+    message: String!
+}
+
+type PageInfo {
+    total: Int!
+    hasMore: Boolean!
+}
+
+type Blog {
+    id: Int!
+    author: String!
+    site: String!
+    stableSite: String!
+    siteName: String!
+    feed: String!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type Article {
+    id: Int!
+    url: String!
+    slug: String!
+    blog: Blog!
+    title: String!
+    tags: [String!]!
+    summary(length: Int! = 200): String!
+    content: String!
+    date: DateTime!
+    views: Int!
+    createdAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type ArticlesResponse {
+    articles: [Article!]!
+    pageInfo: PageInfo!
+}
+
+
+type ArticlesByBlogResponse {
+    articles: [Article!]!
+    blog: Blog!
+}
+
+
+type Query {
+    articles(page: Int! = 1, size: Int! = 99999): ArticlesResponse
+    articleById(id: Int!): Article
+    articleBySlug(slug: String!): Article
+    articlesByBlog(stableSite: String!): ArticlesByBlogResponse
+}

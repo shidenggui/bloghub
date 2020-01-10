@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "@fullhuman/postcss-purgecss": "^2.0.6",
+    "@next/bundle-analyzer": "^9.2.1",
+    "apollo-boost": "^0.4.7",
+    "apollo-client": "^2.6.8",
+    "autoprefixer": "^9.7.4",
+    "graphql": "^14.6.0",
+    "graphql-tag": "^2.10.3",
+    "isomorphic-unfetch": "^3.0.0",
+    "next": "^9.2.1",
+    "postcss-import": "^12.0.1",
+    "react": "^16.12.0",
+    "react-apollo": "^3.1.3",
+    "react-dom": "^16.12.0",
+    "react-markdown": "^4.3.1",
+    "react-syntax-highlighter": "^12.2.1",
+    "tailwindcss": "^1.2.0"
+  },
+  "scripts": {
+    "dev": "next -p 4000",
+    "build": "next build",
+    "start": "next start -p 4000",
+    "export": "next export"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.0",
+    "@types/react": "^16.9.19",
+    "typescript": "^3.7.5"
+  }
+}
