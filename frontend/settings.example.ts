@@ -1,4 +1,4 @@
-export const BASE_HOST = 'https://bloghub.com'
+export const BASE_HOST = 'https://bloghub.fun'
 
 export const CDN_HOST = ''
 
@@ -31,7 +31,7 @@ export const HEADER_NAVS = [
   },
   {
     name: 'Rss',
-    href: 'https://bloghub.com/feeds',
+    href: 'https://bloghub.fun/feeds',
     rel: 'nofollow',
     prefetch: false,
     className: 'hidden lg:inline',

@@ -3,6 +3,7 @@ import { config } from 'dotenv'
 config()
 
 export const BLOG_CSV_PATH = './assets/blogs-original.csv'
+export const BASE_HOST = process.env.BASE_HOST || 'https://bloghub.fun'
 
 export const FETCH_FEED_TIMEOUT = 60000
 export const FETCH_FEED_CONCURRENCY = 10

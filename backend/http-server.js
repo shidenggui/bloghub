@@ -4,7 +4,7 @@ const express = require('express');
 require('dotenv').config()
 
 const app = express();
-const BASE_HOST = process.env.BASE_HOST || 'https://bloghub.com'
+const BASE_HOST = process.env.BASE_HOST || 'https://bloghub.fun'
 
 app.get('/*', (req, res) => {
   res.redirect(301, `${BASE_HOST}${req.originalUrl}`)

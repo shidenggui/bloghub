@@ -1,5 +1,6 @@
 import Rss from 'rss';
 import { Article } from '../hub/models/article';
+import { BASE_HOST } from '../../../settings';
 
 interface RSS {
   item(itemOptions: ItemOptions): RSS;
@@ -22,16 +23,16 @@ export class RssGenerator {
     this.feed = new Rss({
       title: 'BlogHub',
       // eslint-disable-next-line @typescript-eslint/camelcase
-      feed_url: 'https://bloghub.com/feeds',
+      feed_url: `${BASE_HOST}/feeds`,
       // eslint-disable-next-line @typescript-eslint/camelcase
-      site_url: 'https://bloghub.com',
+      site_url: BASE_HOST,
     });
   }
 
   addItem(article: Article) {
     this.feed.item({
       title: article.title,
-      url: `https://bloghub.com/articles/${article.slug}`,
+      url: `${BASE_HOST}/articles/${article.slug}`,
       date: article.date,
       author: article.blog.siteName,
       description: article.summary.slice(0, 200),
