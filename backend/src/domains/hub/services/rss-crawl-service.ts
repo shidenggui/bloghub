@@ -50,11 +50,11 @@ export class RssCrawlService {
     await Promise.all(
       rssParseOutput.articles
         .map(async o => {
-            try {
+            // try {
               await this.articleRepository.createOrUpdate(o)
-            } catch (e) {
-              console.log(`Try to create or update ${JSON.stringify(o)} failed`, e)
-            }
+            // } catch (e) {
+            //   console.log(`Try to create or update ${o.repr()} failed`, e)
+            // }
           }
         )
     )

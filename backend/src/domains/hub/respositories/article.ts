@@ -62,11 +62,10 @@ export class ArticleRepository {
   async createOrUpdate(dto: CreateArticleDto): Promise<Article> {
     this.logger.log(`Create or update ${dto.repr()}`);
     const createArticle = {
-      ...dto,
+      ...dto.toPartialArticle(),
       blog: await this.blogTableRepository.findOne({stableFeed: dto.stableFeed}),
       tags: dto.tags.join(','),
     };
-    delete createArticle.feed
 
     let articleTable = await this.tableRepository.findOne({stableUrl: dto.stableUrl});
     if (!articleTable) {

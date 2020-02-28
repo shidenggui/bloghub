@@ -9,8 +9,9 @@ import { BlogTable } from './tables/blog';
 import { ArticleTable } from './tables/article';
 import { GraphQLDateTime } from 'graphql-iso-date';
 import { GraphQLModule } from '@nestjs/graphql';
-import { DATABASE_NAME, DATABASE_TYPE, DATABASE_HOST, DATABASE_PASSWORD, DATABASE_PORT, DATABASE_USERNAME } from '../settings';
+import { DATABASE_HOST, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_PORT, DATABASE_TYPE, DATABASE_USERNAME } from '../settings';
 import { CommandModule } from 'nestjs-command';
+import { ScheduleModule } from '@nestjs/schedule';
 
 
 @Module({
@@ -28,6 +29,7 @@ import { CommandModule } from 'nestjs-command';
       isGlobal: true,
       envFilePath: `${process.cwd()}/.env`
     }),
+    ScheduleModule.forRoot(),
     TypeOrmModule.forRoot({
       type: DATABASE_TYPE as any,
       database: DATABASE_NAME,

@@ -21,6 +21,14 @@ export class CreateArticleDto extends BaseDto {
     this.slug = MiscUtils.makeSlug(this.stableUrl)
   }
 
+  toPartialArticle() {
+    const partialArticle = {
+      ...this
+    }
+    delete partialArticle.feed
+    delete partialArticle.stableFeed
+    return partialArticle
+  }
 
   repr() {
     return JSON.stringify({
