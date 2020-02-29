@@ -24,7 +24,7 @@ function Link({href, children}: { href: string, children: any }) {
   return (
     <a href={href}
        target={target}
-       rel="noopener noreferrer"
+       rel="noopener"
        className={`border-gray-600 border border-t-0 border-l-0 border-r-0 border-solid border-black text-gray-600 ${basicTextStyle}`}>{children}</a>
   );
 }
