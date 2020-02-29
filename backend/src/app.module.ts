@@ -37,6 +37,7 @@ import { ScheduleModule } from '@nestjs/schedule';
       port: DATABASE_PORT,
       username: DATABASE_USERNAME,
       password: DATABASE_PASSWORD,
+      charset: "utf8mb4",
       entities: [BlogTable, ArticleTable],
       synchronize: true,
     }),
