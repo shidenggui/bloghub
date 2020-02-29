@@ -45,6 +45,11 @@ const Page = ({initArticles}) => {
         {loading ? 'Loading...' : 'Read More'}
       </div>
       }
+
+      <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener" className="hidden lg:block my-2 text-center text-gray-300 text-xs">
+        浙ICP备17008156号
+      </a>
+
     </Layout>
   );
 };
