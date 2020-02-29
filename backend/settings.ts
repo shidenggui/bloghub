@@ -5,6 +5,8 @@ config()
 export const BLOG_CSV_PATH = './assets/blogs-original.csv'
 export const BASE_HOST = process.env.BASE_HOST || 'https://bloghub.fun'
 
+export const SENTRY_DSN = process.env.SENTRY_DSN || ''
+
 export const FETCH_FEED_TIMEOUT = 60000
 export const FETCH_FEED_CONCURRENCY = 10
 
@@ -23,3 +25,5 @@ console.log('Database config: ', JSON.stringify({
   DATABASE_USERNAME,
   DATABASE_PASSWORD,
 }))
+
+console.log('Sentry dsn', JSON.stringify({SENTRY_DSN}))

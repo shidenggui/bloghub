@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^6.10.14",
     "@nestjs/schedule": "^0.2.0",
     "@nestjs/typeorm": "^6.2.0",
+    "@ntegral/nestjs-sentry": "^1.0.0",
     "@types/graphql-iso-date": "^3.3.3",
     "@types/js-yaml": "^3.12.2",
     "@types/rss": "^0.0.28",
