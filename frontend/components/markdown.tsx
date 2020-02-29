@@ -1,10 +1,5 @@
 import ReactMarkdown from 'react-markdown';
 import { createElement } from 'react';
-import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { CODE_STYLE, SUPPORT_CODE_LANGUAGES } from '../libs/markdown/config';
-
-Object.entries(SUPPORT_CODE_LANGUAGES)
-  .map(([l, v]) => SyntaxHighlighter.registerLanguage(l, v));
 
 const basicTextStyle = 'text-justify break-word';
 
@@ -65,15 +60,6 @@ const ListItem = ({children}) => {
   );
 };
 
-// CodeBlock
-const CodeBlock = ({language, value}) => {
-  return (
-    <SyntaxHighlighter language={language} style={CODE_STYLE}>
-      {value}
-    </SyntaxHighlighter>
-  );
-};
-
 export default function Markdown({source}) {
   return (
     <ReactMarkdown source={source}
@@ -84,7 +70,6 @@ export default function Markdown({source}) {
                      image: Image,
                      blockquote: BlockQuote,
                      listItem: ListItem,
-                     code: CodeBlock,
                    }}
     />
   );
