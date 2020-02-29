@@ -1,6 +1,6 @@
 import Header from './header';
 import Head from 'next/head';
-import { BAIDU_ANALYTIC, FAVICON, CDN_HOST } from '../settings';
+import { BAIDU_ANALYTIC, CDN_HOST, FAVICON } from '../settings';
 
 export default function Layout(props) {
   return (
@@ -41,9 +41,7 @@ var _hmt = _hmt || [];
       </Head>
       <Header/>
       <div className="mx-4 max-w-3xl md:mx-auto">
-        <div className="my-12">
-          {props.children}
-        </div>
+        {props.children}
       </div>
     </div>
   );

@@ -16,11 +16,12 @@ const Page = ({article}: { article: IArticleOfClient }) => {
         <ArticleTwitterCard article={article}/>
       </Head>
 
-      <div className="mb-4">
-        <header className="mb-4">
-          <h1 className="mt-8 text-xl font-normal text-gray-800 text-justify">{(article as IArticleOfClient).polishedTitle}</h1>
-          <div className="flex">
-            <div className="text-sm my-2 ml-auto text-gray-600">
+      <div className="my-12">
+        <div className="mb-4">
+          <header className="mb-4">
+            <h1 className="mt-8 text-xl font-normal text-gray-800 text-justify">{(article as IArticleOfClient).polishedTitle}</h1>
+            <div className="flex">
+              <div className="text-sm my-2 ml-auto text-gray-600">
               <span className="text-gray-700">
               <Link href={"/blogs/[stableSite]"} as={`/blogs/${article.blog.stableSite}`}>
                   <a>
@@ -28,25 +29,26 @@ const Page = ({article}: { article: IArticleOfClient }) => {
                   </a>
                 </Link>
             </span>
-              &nbsp;at {TimeUtils.humanReadableTimeOf(article.date)}</div>
+                &nbsp;at {TimeUtils.humanReadableTimeOf(article.date)}</div>
+            </div>
+          </header>
+
+
+          <div className="text-gray-700 leading-relaxed text-justify">
+            {article.polishedSummary}……
           </div>
-        </header>
-
-
-        <div className="text-gray-700 leading-relaxed text-justify">
-          {article.polishedSummary}……
         </div>
-      </div>
-      <div className="my-6">
-        <a href={article.url} target="_blank" title={article.title} className="block text-2xl text-red-700 font-medium text-center cursor-pointer">
-          Read More
-        </a>
-        <div className="flex">
-          <div className="m-auto text-xs text-gray-500">
-            Jump to&nbsp;
-            <span className="">
+        <div className="my-6">
+          <a href={article.url} target="_blank" title={article.title} className="block text-2xl text-red-700 font-medium text-center cursor-pointer">
+            Read More
+          </a>
+          <div className="flex">
+            <div className="m-auto text-xs text-gray-500">
+              Jump to&nbsp;
+              <span className="">
             {(article.blog as IBlogOfClient).siteDomain}
             </span>
+            </div>
           </div>
         </div>
       </div>

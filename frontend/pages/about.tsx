@@ -10,7 +10,9 @@ export default function About() {
         <title key="title">About</title>
         <link rel="canonical" href="/about" key="canonical"/>
       </Head>
-      <Markdown source={ABOUT_PAGE}/>
+      <div className="my-12">
+        <Markdown source={ABOUT_PAGE}/>
+      </div>
     </Layout>
   );
 }

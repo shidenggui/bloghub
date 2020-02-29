@@ -37,18 +37,23 @@ const Page = ({initArticles}) => {
         />
       </Head>
 
-      {articlesRef.current.map(a => (
-        <ArticleSummary article={a as any} key={a.id}/>
-      ))}
-      {hasMore &&
-      <div className="my-8 text-2xl text-red-700 font-medium text-center cursor-pointer" onClick={() => setPage(page + 1)}>
-        {loading ? 'Loading...' : 'Read More'}
-      </div>
-      }
+      <div className="my-12">
+        {articlesRef.current.map(a => (
+          <ArticleSummary article={a as any} key={a.id}/>
+        ))}
+        {hasMore &&
+        <div className="my-8 text-2xl text-red-700 font-medium text-center cursor-pointer" onClick={() => setPage(page + 1)}>
+          {loading ? 'Loading...' : 'Read More'}
+        </div>
+        }
 
-      <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener" className="hidden lg:block my-2 text-center text-gray-300 text-xs">
-        浙ICP备17008156号
-      </a>
+      </div>
+
+      <div className="my-2">
+        <a href="http://www.beian.miit.gov.cn" target="_blank" rel="nofollow noopener" className="hidden lg:block text-center text-gray-300 text-xs">
+          浙ICP备17008156号
+        </a>
+      </div>
 
     </Layout>
   );
