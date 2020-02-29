@@ -24,6 +24,6 @@ RUN cd /code/backend \
     && npm run build
 
 WORKDIR /code/frontend
-CMD cd /code/backend && pm2 start dist/src/main.js && pm2 start http-server.js && cd /code/frontend && npm run start
+CMD cd /code/backend && npm run typeorm:run && pm2 start dist/src/main.js && pm2 start http-server.js && cd /code/frontend && npm run start
 
 

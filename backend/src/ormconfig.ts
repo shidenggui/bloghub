@@ -2,7 +2,6 @@ import { ConnectionOptions } from 'typeorm';
 import { DATABASE_HOST, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_PORT, DATABASE_TYPE, DATABASE_USERNAME } from '../settings';
 
 
-console.log({__dirname})
 // Check typeORM documentation for more information.
 const config: ConnectionOptions = {
   type: DATABASE_TYPE as any,
@@ -21,7 +20,7 @@ const config: ConnectionOptions = {
   // you can disable this if you prefer running migration manually.
   migrationsRun: false,
   loggerLevel: "error",
-  logging: true,
+  // logging: true,
   // logger: 'file',
 
   // Allow both start:prod and start:dev to use migrations
