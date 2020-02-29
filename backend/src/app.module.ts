@@ -14,6 +14,7 @@ import { CommandModule } from 'nestjs-command';
 import { ScheduleModule } from '@nestjs/schedule';
 import { SentryModule } from '@ntegral/nestjs-sentry/dist/sentry.module';
 import { LogLevel } from '@sentry/types';
+import config from './ormconfig';
 
 
 const imports = [
@@ -31,17 +32,7 @@ const imports = [
     envFilePath: `${process.cwd()}/.env`
   }),
   ScheduleModule.forRoot(),
-  TypeOrmModule.forRoot({
-    type: DATABASE_TYPE as any,
-    database: DATABASE_NAME,
-    host: DATABASE_HOST,
-    port: DATABASE_PORT,
-    username: DATABASE_USERNAME,
-    password: DATABASE_PASSWORD,
-    charset: "utf8mb4",
-    entities: [BlogTable, ArticleTable],
-    synchronize: true,
-  }),
+  TypeOrmModule.forRoot(config),
 ];
 
 if (SENTRY_DSN) {
