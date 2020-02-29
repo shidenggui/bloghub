@@ -32,6 +32,7 @@ export class RssParser {
     const articles = result.items
       // Filter too long url
       .filter(o => o.link.trim().length <= 255)
+      .filter(o => o.title.trim().length <= 255)
       .map(o => new CreateArticleDto(
         feed,
         o.link.trim(),
