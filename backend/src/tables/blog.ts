@@ -18,10 +18,10 @@ export class BlogTable {
   @Column()
   public siteName: string;
 
-  @Column()
+  @Column({length: 512})
   public feed: string;
 
-  @Column()
+  @Column({length: 512})
   public stableFeed: string;
 
 

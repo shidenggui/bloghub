@@ -7,29 +7,29 @@ export class ArticleTable {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column()
+  @Column({length: 512})
   public url: string;
 
-  @Column()
+  @Column({length: 512})
   public slug: string;
 
-  @Column()
+  @Column({length: 512})
   public stableUrl: string;
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   @ManyToOne(type => BlogTable)
   blog: BlogTable;
 
-  @Column()
+  @Column({length: 512})
   public title: string;
 
-  @Column()
+  @Column({length: 512})
   public tags: string;
 
-  @Column('text')
+  @Column('longtext')
   public summary: string;
 
-  @Column('text')
+  @Column('longtext')
   public content: string;
 
   @Column()
