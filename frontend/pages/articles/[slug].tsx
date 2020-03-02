@@ -38,10 +38,10 @@ const Page = ({article}: { article: IArticleOfClient }) => {
             {article.polishedSummary}……
           </div>
         </div>
-        <div className="my-6">
-          <a href={article.url} target="_blank" title={article.title} className="block text-2xl text-red-700 font-medium text-center cursor-pointer">
+        <a className="block my-6 cursor-pointer" href={article.url} rel="noopener nofollow" target="_blank" title={article.title}>
+          <div className="text-2xl text-red-700 font-medium text-center">
             Read More
-          </a>
+          </div>
           <div className="flex">
             <div className="m-auto text-xs text-gray-500">
               Jump to&nbsp;
@@ -50,7 +50,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
             </span>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </Layout>
   );
