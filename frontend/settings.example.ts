@@ -22,14 +22,6 @@ export const HEADER_NAVS = [
     target: '_blank',
   },
   {
-    name: 'Twitter',
-    href: 'https://twitter.com/shidenggui',
-    rel: 'nofollow',
-    prefetch: false,
-    className: 'hidden lg:inline',
-    target: '_blank',
-  },
-  {
     name: 'Rss',
     href: 'https://bloghub.fun/feeds',
     rel: 'nofollow',
