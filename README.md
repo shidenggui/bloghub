@@ -23,7 +23,8 @@ BlogHub 希望能帮助大家探索更多有趣的独立博客，发现其中蕴
 
 [当前已收录博客列表](./backend/assets/blogs-original.csv)
 
-* 中文独立博客
+* 独立域名
+* 原创内容
 * 近期依旧处于更新中
 * 提供 RSS 订阅，RSS 中提供 Summary
 
