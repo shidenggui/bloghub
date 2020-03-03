@@ -34,7 +34,7 @@ BlogHub 希望能帮助大家探索更多有趣的独立博客，发现其中蕴
 
 **BlogHub** © [shidenggui](https://github.com/shidenggui), Released under the [MIT](./LICENSE) License.<br>
 
-> Blog [@shidenggui](https://shidenggui.com) · Twitter [@shidenggui](https://twitter.com/DIYgod) · WeChat [@食灯鬼](https://gitee.com/shidenggui/assets/raw/master/uPic/a22JuZ.jpg)
+> Blog [@shidenggui](https://shidenggui.com) · Twitter [@shidenggui](https://twitter.com/shidenggui) · WeChat [@食灯鬼](https://gitee.com/shidenggui/assets/raw/master/uPic/a22JuZ.jpg)
 
 ### 鸣谢
 
