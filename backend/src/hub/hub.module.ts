@@ -12,6 +12,7 @@ import { CrawlArticlesByRssCommand } from '../commands/crawl-articles-by-rss.com
 import { DeleteBlogCommand } from '../commands/delete-blog.command';
 import { GenerateTypingsByGraphqlCommand } from '../commands/generate-typings-by-graphql.command';
 import { CrawlArticlesRegularlyService } from '../crons/crawl-articles-regularly';
+import { AddBlogFromIssueCommand } from '../commands/add-blog-from-issue';
 
 const HubTypeOrmModule = TypeOrmModule.forFeature([BlogTable, ArticleTable]);
 
@@ -28,12 +29,9 @@ const HubTypeOrmModule = TypeOrmModule.forFeature([BlogTable, ArticleTable]);
     DeleteBlogCommand,
     GenerateTypingsByGraphqlCommand,
     CrawlArticlesRegularlyService,
+    AddBlogFromIssueCommand,
   ],
   exports: [
-    DeleteBlogCommand,
-    LoadBlogsFromCsvCommand,
-    CrawlArticlesByRssCommand,
-    GenerateTypingsByGraphqlCommand,
     HubTypeOrmModule,
   ],
 })
