@@ -30,7 +30,7 @@ export class AddBlogFromIssueCommand {
     const [blogInfo] = safeLoadAll(body)
     console.log(`Added blog ${JSON.stringify(blogInfo)}`)
     let csv = readFileSync(BLOG_CSV_PATH, 'utf8')
-    csv = csv.trim() + `\n${blogInfo['Introduction'].trim()}, ${blogInfo['Address'].trim()}, ${blogInfo['RSS feed'].trim()}, ${blogInfo['tags'].trim()}`
+    csv = csv.trim() + `\n${blogInfo['Introduction'].trim()}, ${blogInfo['Address'].trim()}, ${blogInfo['RSS feed'].trim()}, ${blogInfo['tags'].trim()}\n`
     writeFileSync(BLOG_CSV_PATH, csv)
 
     return
