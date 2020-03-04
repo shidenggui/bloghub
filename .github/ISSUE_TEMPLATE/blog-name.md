@@ -2,7 +2,7 @@
 name: Blog name
 about: Add blog
 title: ''
-labels: ''
+labels: blog
 assignees: ''
 
 ---
