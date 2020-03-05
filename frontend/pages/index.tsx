@@ -20,7 +20,7 @@ const Page = ({initArticles}) => {
     },
     skip: page === 1,
     // Apollo bug, see https://github.com/apollographql/apollo-client/issues/5659
-    fetchPolicy: "network-only"
+    fetchPolicy: "no-cache"
   });
 
   let hasMore = true;
@@ -69,6 +69,7 @@ Page.getInitialProps = async ({apolloClient}) => {
         page: 1,
         size: HOME_PAGE_SIZE,
       },
+      fetchPolicy: "no-cache"
     },
   );
   return {
