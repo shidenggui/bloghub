@@ -19,7 +19,10 @@ const Page = ({initArticles}) => {
       size: HOME_PAGE_SIZE,
     },
     skip: page === 1,
+    // Apollo bug, see https://github.com/apollographql/apollo-client/issues/5659
+    fetchPolicy: "network-only"
   });
+
   let hasMore = true;
   if (!loading && data) {
     articlesRef.current.push(...data.articles.articles);
