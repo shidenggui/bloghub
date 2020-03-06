@@ -8,13 +8,15 @@ import { ArticlesResponse } from '../../graphql/graphql';
 import TwitterCard from '../components/twitter-card';
 import { HOME_PAGE_SIZE } from '../settings';
 import { useDispatch, useSelector } from 'react-redux'
-import { nextPage, addArticles, setScrollPosition } from '../store/actions';
+import { addArticles, nextPage, setScrollPosition } from '../store/actions';
+import { useState } from 'react';
 
 const Page = () => {
   const storeArticles: IArticleOfClient[] = useSelector(state => state.articles.articles)
   const storeTargetPage: number = useSelector(state => state.articles.targetPage)
   const storePage: number = useSelector(state => state.articles.page)
   const storeScrollToPosition: number = useSelector(state => state.articles.scrollPosition)
+  const [hasMore, setHasMore] = useState(true)
   const dispatch = useDispatch()
   const shouldRefresh = storePage !== storeTargetPage;
 
@@ -30,17 +32,14 @@ const Page = () => {
 
   if (!loading && data && shouldRefresh) {
     dispatch(addArticles((data.articles.articles as IArticleOfClient[]), storeTargetPage))
+    setHasMore(data?.articles?.pageInfo?.hasMore)
+
     if (typeof window !== 'undefined' && storeScrollToPosition) {
       window.scrollTo(0, storeScrollToPosition)
       dispatch(setScrollPosition(0))
     }
   }
 
-  console.log('render')
-  let hasMore = true;
-  if (!loading && data) {
-    hasMore = storeTargetPage === 1 || data?.articles?.pageInfo?.hasMore;
-  }
   return (
     <Layout>
       <Head>
