@@ -1,34 +1,46 @@
 import Layout from '../components/layout';
 import { withApollo } from '../libs/with-apollo';
 import ArticleSummary from '../components/article-summary';
-import { LIST_ARTICLES } from '../graphql/queries';
+import { IArticleOfClient, LIST_ARTICLES } from '../graphql/queries';
 import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
-import { useRef, useState } from 'react';
-import { Article, ArticlesResponse } from '../../graphql/graphql';
+import { ArticlesResponse } from '../../graphql/graphql';
 import TwitterCard from '../components/twitter-card';
 import { HOME_PAGE_SIZE } from '../settings';
+import { useDispatch, useSelector } from 'react-redux'
+import { nextPage, addArticles, setScrollPosition } from '../store/actions';
 
-const Page = ({initArticles}) => {
-  const articlesRef = useRef<Article[]>(initArticles);
+const Page = () => {
+  const storeArticles: IArticleOfClient[] = useSelector(state => state.articles.articles)
+  const storeTargetPage: number = useSelector(state => state.articles.targetPage)
+  const storePage: number = useSelector(state => state.articles.page)
+  const storeScrollToPosition: number = useSelector(state => state.articles.scrollPosition)
+  const dispatch = useDispatch()
+  const shouldRefresh = storePage !== storeTargetPage;
 
-  const [page, setPage] = useState(1);
   const {data, loading} = useQuery<{ articles: ArticlesResponse }>(LIST_ARTICLES, {
     variables: {
-      page: page,
+      page: storeTargetPage,
       size: HOME_PAGE_SIZE,
     },
-    skip: page === 1,
+    skip: !shouldRefresh,
     // Apollo bug, see https://github.com/apollographql/apollo-client/issues/5659
     fetchPolicy: "no-cache"
   });
 
-  let hasMore = true;
-  if (!loading && data) {
-    articlesRef.current.push(...data.articles.articles);
-    hasMore = page === 1 || data?.articles?.pageInfo?.hasMore;
+  if (!loading && data && shouldRefresh) {
+    dispatch(addArticles((data.articles.articles as IArticleOfClient[]), storeTargetPage))
+    if (typeof window !== 'undefined' && storeScrollToPosition) {
+      window.scrollTo(0, storeScrollToPosition)
+      dispatch(setScrollPosition(0))
+    }
   }
 
+  console.log('render')
+  let hasMore = true;
+  if (!loading && data) {
+    hasMore = storeTargetPage === 1 || data?.articles?.pageInfo?.hasMore;
+  }
   return (
     <Layout>
       <Head>
@@ -41,11 +53,11 @@ const Page = ({initArticles}) => {
       </Head>
 
       <div className="my-12">
-        {articlesRef.current.map(a => (
+        {storeArticles.map(a => (
           <ArticleSummary article={a as any} key={a.id}/>
         ))}
         {hasMore &&
-        <div className="my-8 text-2xl text-red-700 font-medium text-center cursor-pointer" onClick={() => setPage(page + 1)}>
+        <div className="my-8 text-2xl text-red-700 font-medium text-center cursor-pointer" onClick={() => dispatch(nextPage())}>
           {loading ? 'Loading...' : 'Read More'}
         </div>
         }
@@ -62,7 +74,11 @@ const Page = ({initArticles}) => {
   );
 };
 
-Page.getInitialProps = async ({apolloClient}) => {
+Page.getInitialProps = async ({store, apolloClient}) => {
+  if (store.getState().articles.page >= 1) {
+    return {}
+  }
+
   const {data: {articles: {articles}}} = await apolloClient.query({
       query: LIST_ARTICLES,
       variables: {
@@ -72,9 +88,9 @@ Page.getInitialProps = async ({apolloClient}) => {
       fetchPolicy: "no-cache"
     },
   );
-  return {
-    initArticles: articles,
-  };
+  store.dispatch(nextPage())
+  store.dispatch(addArticles(articles, 1))
+  return {};
 };
 
 export default withApollo({ssr: true})(Page);
