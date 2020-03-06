@@ -30,11 +30,11 @@ const Page = () => {
     fetchPolicy: "no-cache"
   });
 
-  if (!loading && data && shouldRefresh) {
-    dispatch(addArticles((data.articles.articles as IArticleOfClient[]), storeTargetPage))
-    setHasMore(data?.articles?.pageInfo?.hasMore)
-
-    if (typeof window !== 'undefined' && storeScrollToPosition) {
+  if (!loading && data) {
+    if (shouldRefresh) {
+      dispatch(addArticles((data.articles.articles as IArticleOfClient[]), storeTargetPage))
+      setHasMore(data?.articles?.pageInfo?.hasMore)
+    } else if (typeof window !== 'undefined' && storeScrollToPosition) {
       window.scrollTo(0, storeScrollToPosition)
       dispatch(setScrollPosition(0))
     }
