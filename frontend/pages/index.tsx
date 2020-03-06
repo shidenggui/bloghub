@@ -47,7 +47,7 @@ const Page = () => {
         <link rel="canonical" href="/" key="canonical"/>
 
         <TwitterCard title={'BlogHub'}
-                     description={'Home For Independent Bloggers'}
+                     description={'一群自由而有趣的灵魂，终将在此相遇'}
         />
       </Head>
 
