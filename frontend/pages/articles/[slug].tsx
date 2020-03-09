@@ -12,7 +12,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
       <Head>
         <title key="title">{article.polishedTitle}</title>
         <link rel="canonical" href={`/articles/${article.slug}`} key="canonical"/>
-
+        <link rel="prerender" href={article.url}/>
         <ArticleTwitterCard article={article}/>
       </Head>
 
