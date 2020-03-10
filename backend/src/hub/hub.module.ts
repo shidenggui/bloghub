@@ -13,6 +13,7 @@ import { DeleteBlogCommand } from '../commands/delete-blog.command';
 import { GenerateTypingsByGraphqlCommand } from '../commands/generate-typings-by-graphql.command';
 import { CrawlArticlesRegularlyService } from '../crons/crawl-articles-regularly';
 import { AddBlogFromIssueCommand } from '../commands/add-blog-from-issue';
+import { TestRssCommand } from '../commands/test-rss.command';
 
 const HubTypeOrmModule = TypeOrmModule.forFeature([BlogTable, ArticleTable]);
 
@@ -30,6 +31,7 @@ const HubTypeOrmModule = TypeOrmModule.forFeature([BlogTable, ArticleTable]);
     GenerateTypingsByGraphqlCommand,
     CrawlArticlesRegularlyService,
     AddBlogFromIssueCommand,
+    TestRssCommand,
   ],
   exports: [
     HubTypeOrmModule,

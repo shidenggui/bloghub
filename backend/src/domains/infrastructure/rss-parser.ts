@@ -9,19 +9,11 @@ export interface RssParseOutput {
 
 export class RssParser {
   constructor(private readonly parser = new Parser({
-    timeout: FETCH_FEED_TIMEOUT
-  })) {
-  }
-
-  private fixDate(date: Date): Date {
-    const now = new Date();
-    if (date <= now) {
-      return date
+    timeout: FETCH_FEED_TIMEOUT,
+    customFields: {
+      item: ['summary']
     }
-
-    // If date happens in future, subtract one day
-    date.setTime(date.getTime() - 24 * 60 * 60 * 1000)
-    return date
+  })) {
   }
 
   async fetch(feed: string): Promise<RssParseOutput> {
@@ -38,7 +30,7 @@ export class RssParser {
         o.link.trim(),
         o.title.trim(),
         o.categories?.filter(t => typeof t === 'string') || [],
-        o.contentSnippet?.trim() || '',
+        this.stripHtml(o.contentSnippet?.trim() || o.summary?.trim() || ''),
         o.content?.trim() || '',
         this.fixDate(new Date(o.pubDate))
       ))
@@ -52,5 +44,23 @@ export class RssParser {
       author,
       articles
     }
+  }
+
+  // Copy from https://github.com/rbren/rss-parser/blob/73dc39b9febcc51c0915d2c9851d390863a4a8e4/lib/utils.js#L5
+  private stripHtml(str: string): string {
+    return str
+      .replace(/<(?:.|\n)*?>/gm, '')
+      .replace(/\n/g, '');
+  }
+
+  private fixDate(date: Date): Date {
+    const now = new Date();
+    if (date <= now) {
+      return date
+    }
+
+    // If date happens in future, subtract one day
+    date.setTime(date.getTime() - 24 * 60 * 60 * 1000)
+    return date
   }
 }
