@@ -27,13 +27,14 @@ export class RssParser {
       .filter(o => o.title.trim().length <= 255)
       .map(o => new CreateArticleDto(
         feed,
-        o.link.trim(),
+        this.parseLink(feed, o.link),
         o.title.trim(),
         o.categories?.filter(t => typeof t === 'string') || [],
-        this.stripHtml(o.contentSnippet?.trim() || o.summary?.trim() || ''),
+        this.parseSummary(o),
         o.content?.trim() || '',
         this.fixDate(new Date(o.pubDate))
-      ))
+        )
+      )
       .filter(o => !isNaN(o.date.getTime()))
     let author = null;
     if (result.items?.length) {
@@ -44,6 +45,20 @@ export class RssParser {
       author,
       articles
     }
+  }
+
+  private parseLink(feed: string, link: string): string {
+    link = link.trim()
+    if (!link.startsWith('/')) return link
+
+    return `${new URL(feed).origin}${link}`
+  }
+
+  private parseSummary(article: Parser.Item): string {
+    return this.stripHtml(
+      article.contentSnippet?.trim()
+      || (typeof article.summary == 'string' ? article.summary.trim() : '')
+    );
   }
 
   // Copy from https://github.com/rbren/rss-parser/blob/73dc39b9febcc51c0915d2c9851d390863a4a8e4/lib/utils.js#L5
