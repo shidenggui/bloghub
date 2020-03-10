@@ -11,7 +11,7 @@ export class RssParser {
   constructor(private readonly parser = new Parser({
     timeout: FETCH_FEED_TIMEOUT,
     customFields: {
-      item: ['summary']
+      item: ['summary', 'category']
     }
   })) {
   }
@@ -29,7 +29,7 @@ export class RssParser {
         feed,
         this.parseLink(feed, o.link),
         o.title.trim(),
-        o.categories?.filter(t => typeof t === 'string') || [],
+        this.parseCategory(o),
         this.parseSummary(o),
         o.content?.trim() || '',
         this.fixDate(new Date(o.pubDate))
@@ -45,6 +45,13 @@ export class RssParser {
       author,
       articles
     }
+  }
+
+  private parseCategory(article: Parser.Item): string[] {
+    let categories = article.categories?.filter(t => typeof t === 'string') || []
+    if (!categories.length && article.category?.$.term)
+      categories = [article.category?.$.term]
+    return categories
   }
 
   private parseLink(feed: string, link: string): string {

@@ -13,7 +13,7 @@ export class TestRssCommand {
       type: 'string',
     }) rss
   ) {
-    console.log(await new RssParser().fetch(rss))
+    console.log(JSON.stringify(await new RssParser().fetch(rss), null, 2))
     return
   }
 }
