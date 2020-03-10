@@ -16,7 +16,7 @@ export class BlogCsvLoader {
 
   async parse(): Promise<CreateBlogDto[]> {
     const blogRows = await neatCsv<BlogRow>(
-      readFileSync(this.path),
+      readFileSync(this.path).toString().trim(),
       {
         mapHeaders: ({header}) => header.trim()
       })
