@@ -21,16 +21,17 @@ const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: Blog | nul
   return (
     <Layout>
       <Head>
-        <title key="title">Archive</title>
-        <link rel="canonical" href="/archive" key="canonical"/>
+        <title key="title">{blog.author} - 博客文章</title>
+        <meta key="description" name="description" content={articles.map(a => a.polishedTitle).join(',').slice(0, 200)}/>
+        <link rel="canonical" href={`/blogs/${blog.stableSite}`} key="canonical"/>
       </Head>
 
       <div className="my-12">
         <header className="text-2xl">
           <a href={blog.site} target="_blank" rel="nofollow noopener" className="block">
-            <div>
+            <h1>
               {blog.author}
-            </div>
+            </h1>
             <div className="text-xs text-gray-500">
               {(blog as IBlogOfClient).siteDomain}
             </div>
@@ -41,7 +42,7 @@ const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: Blog | nul
           <div key={y}>
             <div className="mt-12 mb-6 text-xl text-gray-500 font-medium">{y}</div>
             {yearArticlesMap.get(y).map(a => (
-              <Link href="/articles/[slug]" as={`/articles/${a.slug}`} key={a.slug}>
+              <Link href={"/articles/[slug]"} as={`/articles/${a.slug}`} key={a.slug}>
                 <a className="block my-6 text-gray-800 active:text-red-700 cursor-pointer">
                   {a.polishedTitle}
                 </a>
@@ -54,7 +55,7 @@ const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: Blog | nul
   );
 };
 
-Page.getInitialProps = async ({apolloClient, query, res}) => {
+Page.getInitialProps = async ({apolloClient, query, res, isServer}) => {
   const {data: {articlesByBlog}} = await apolloClient.query({
     query: LiST_ARTICLES_BY_BLOG,
     variables: {
@@ -62,7 +63,10 @@ Page.getInitialProps = async ({apolloClient, query, res}) => {
     },
   });
   if (!articlesByBlog) {
-    res.statusCode = 404
+    if (isServer) {
+      res.statusCode = 404;
+    }
+
     return {
       blog: null,
       articles: []

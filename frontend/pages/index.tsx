@@ -43,7 +43,7 @@ const Page = () => {
   return (
     <Layout>
       <Head>
-        <title key="title">BlogHub</title>
+        <title key="title">独立个人博客推荐 - BlogHub</title>
         <link rel="canonical" href="/" key="canonical"/>
 
         <TwitterCard title={'BlogHub'}

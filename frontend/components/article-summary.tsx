@@ -35,9 +35,9 @@ export default function ArticleSummary({article}: { article: Article }) {
 
 
         <footer className="flex">
-          <div className="ml-auto text-xs text-gray-600">
+          <time className="block ml-auto text-xs text-gray-600" dateTime={article.date} itemProp="datePublished">
             {TimeUtils.humanReadableTimeOf(article.date)}
-          </div>
+          </time>
         </footer>
       </section>
     </Link>

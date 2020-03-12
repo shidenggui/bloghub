@@ -92,6 +92,7 @@ export const LiST_ARTICLES_BY_BLOG = gql`
                site
                author
                siteName
+               stableSite
                siteDomain @client
             }
             articles {

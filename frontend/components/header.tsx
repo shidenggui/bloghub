@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { HEADER_NAVS } from '../settings';
+import { useRouter } from 'next/router';
 
 
 const ICON_MAP = {
@@ -39,10 +40,18 @@ const ICON_MAP = {
 };
 
 export default function Header() {
+  const router = useRouter();
+  const isHomePage = router.pathname === '/' ? true : false;
   return (
-    <div className="mx-4 lg:mx-20 lg:my-12 lg:mb-20  flex justify-between items-center my-8">
+    <nav className="mx-4 lg:mx-20 lg:my-12 lg:mb-20  flex justify-between items-center my-8">
       <Link href="/">
-        <a title="Home Page" className="text-red-700 lg:text-3xl text-2xl tracking-wide font-bold">BlogHub</a>
+        <header>
+          <a title="Home Page" className="text-red-700 lg:text-3xl text-2xl tracking-wide font-bold">
+            {
+              isHomePage ? <h1>BlogHub</h1> : 'BlogHub'
+            }
+          </a>
+        </header>
       </Link>
       <div className="flex items-center">
         {HEADER_NAVS.map(c => (
@@ -64,6 +73,6 @@ export default function Header() {
           </Link>
         ))}
       </div>
-    </div>
+    </nav>
   );
 }
