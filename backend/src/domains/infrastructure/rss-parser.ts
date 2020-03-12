@@ -11,8 +11,16 @@ export class RssParser {
   constructor(private readonly parser = new Parser({
     timeout: FETCH_FEED_TIMEOUT,
     customFields: {
-      item: ['summary', 'category']
-    }
+      item: [
+        'summary',
+        'category',
+        // https://pkq.xyz/rss
+        'content:encoded',
+      ]
+    },
+    headers: {
+      Accept: 'application/rss+xml, application/xml',
+    },
   })) {
   }
 
@@ -31,7 +39,7 @@ export class RssParser {
         o.title.trim(),
         this.parseCategory(o),
         this.parseSummary(o),
-        o.content?.trim() || '',
+        o.content?.trim() || o['content:encoded']?.trim() || '',
         this.fixDate(new Date(o.pubDate))
         )
       )
@@ -65,6 +73,8 @@ export class RssParser {
     return this.stripHtml(
       article.contentSnippet?.trim()
       || (typeof article.summary == 'string' ? article.summary.trim() : '')
+      || article['content:encoded']?.trim()
+      || ''
     );
   }
 
