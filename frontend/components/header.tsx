@@ -41,18 +41,18 @@ const ICON_MAP = {
 
 export default function Header() {
   const router = useRouter();
-  const isHomePage = router.pathname === '/' ? true : false;
+  const isHomePage = router.pathname === '/';
   return (
     <nav className="mx-4 lg:mx-20 lg:my-12 lg:mb-20  flex justify-between items-center my-8">
-      <Link href="/">
-        <header>
-          <a title="Home Page" className="text-red-700 lg:text-3xl text-2xl tracking-wide font-bold">
+      <header>
+        <Link href="/">
+          <a title="Home Page" className="text-red-700 lg:text-3xl text-2xl tracking-wide font-bold cursor-pointer">
             {
               isHomePage ? <h1>BlogHub</h1> : 'BlogHub'
             }
           </a>
-        </header>
-      </Link>
+        </Link>
+      </header>
       <div className="flex items-center">
         {HEADER_NAVS.map(c => (
           <Link href={c.href} key={c.name} prefetch={c.prefetch}>
