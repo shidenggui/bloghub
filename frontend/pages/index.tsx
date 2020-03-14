@@ -6,7 +6,7 @@ import Head from 'next/head';
 import { useQuery } from '@apollo/react-hooks';
 import { ArticlesResponse } from '../../graphql/graphql';
 import TwitterCard from '../components/twitter-card';
-import { HOME_PAGE_SIZE } from '../settings';
+import { BASE_HOST, HOME_PAGE_SIZE } from '../settings';
 import { useDispatch, useSelector } from 'react-redux'
 import { addArticles, nextPage, setScrollPosition } from '../store/actions';
 import { useState } from 'react';
@@ -44,7 +44,7 @@ const Page = () => {
     <Layout>
       <Head>
         <title key="title">独立个人博客推荐 - BlogHub</title>
-        <link rel="canonical" href="/" key="canonical"/>
+        <link rel="canonical" href={BASE_HOST} key="canonical"/>
 
         <TwitterCard title={'BlogHub'}
                      description={'一群自由而有趣的灵魂，终将在此相遇'}

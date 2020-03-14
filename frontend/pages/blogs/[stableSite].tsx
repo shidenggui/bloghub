@@ -5,6 +5,7 @@ import { withApollo } from '../../libs/with-apollo';
 import Head from 'next/head';
 import Link from 'next/link';
 import Error from 'next/error';
+import { BASE_HOST } from '../../settings';
 
 const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: Blog | null }) => {
   if (!blog) return <Error statusCode={404}/>;
@@ -23,7 +24,7 @@ const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: Blog | nul
       <Head>
         <title key="title">{blog.author} - 博客文章</title>
         <meta key="description" name="description" content={articles.map(a => a.polishedTitle).join(',').slice(0, 200)}/>
-        <link rel="canonical" href={`/blogs/${blog.stableSite}`} key="canonical"/>
+        <link rel="canonical" href={`${BASE_HOST}/blogs/${blog.stableSite}`} key="canonical"/>
       </Head>
 
       <div className="my-12">

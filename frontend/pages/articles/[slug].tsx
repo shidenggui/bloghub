@@ -17,7 +17,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
       <Head>
         <title key="title">{article.polishedTitle} - {article.blog.author}</title>
         <meta key="description" name="description" content={article.polishedSummary}/>
-        <link rel="canonical" href={`/articles/${article.slug}`} key="canonical"/>
+        <link rel="canonical" href={`${BASE_HOST}/articles/${article.slug}`} key="canonical"/>
         <link rel="prerender" href={article.url}/>
         <ArticleTwitterCard article={article}/>
       </Head>
