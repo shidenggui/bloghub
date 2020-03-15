@@ -26,7 +26,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
         title={article.polishedTitle}
         datePublished={article.date}
         authorName={article.blog.author}
-        description={article.polishedSummary}
+        description={article.polishedSummary.replace(/"/g, '')}
         images={[]}
         publisherLogo={DEFAULT_TWITTER_CARD_IMAGE}
         publisherName={'BlogHub'}
