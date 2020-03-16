@@ -7,7 +7,7 @@ import Link from 'next/link';
 import Error from 'next/error';
 import { BASE_HOST } from '../../settings';
 
-const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: Blog | null }) => {
+const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: IBlogOfClient | null }) => {
   if (!blog) return <Error statusCode={404}/>;
 
   const yearArticlesMap = articles.reduce((map, cur) => {
@@ -31,10 +31,10 @@ const Page = ({articles, blog}: { articles: IArticleOfClient[], blog: Blog | nul
         <header className="text-2xl">
           <a href={blog.site} target="_blank" rel="nofollow noopener" className="block">
             <h1>
-              {blog.author}
+              {blog.authorName}
             </h1>
             <div className="text-xs text-gray-500">
-              {(blog as IBlogOfClient).siteDomain}
+              {blog.siteDomain}
             </div>
           </a>
 

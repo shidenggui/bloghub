@@ -3,20 +3,20 @@ import { Article, Blog } from '../../graphql/graphql';
 
 interface IBlogWithApollo {
   siteDomain: string
+  authorName: string
 }
 
 export interface IBlogOfClient extends Blog, IBlogWithApollo {
 }
 
 interface IArticleWithApollo {
-    polishedTitle: string
-    polishedSummary: string
+  polishedTitle: string
+  polishedSummary: string
+  blog: IBlogOfClient
 }
 
-export interface IArticleOfClient extends Article, IArticleWithApollo {
+export interface IArticleOfClient extends Omit<Article, "blog">, IArticleWithApollo {
 }
-
-
 
 export const ArticleMetadataFragment = gql`
     fragment ArticleMetadata on Article {
@@ -30,9 +30,11 @@ export const ArticleMetadataFragment = gql`
             site
             stableSite
             siteDomain @client
+            authorName @client
         }
     }
 `;
+
 export const LIST_ARTICLES = gql`
     query Articles($page: Int! = 1, $size: Int! = 10) {
         articles(page: $page, size: $size) {
@@ -43,30 +45,6 @@ export const LIST_ARTICLES = gql`
             pageInfo {
                 hasMore
             }
-        }
-    }
-    ${ArticleMetadataFragment}
-`;
-
-export const LIST_ARTICLES_METADATA = gql`
-    query {
-        articles {
-            articles {
-                ...ArticleMetadata
-            }
-        }
-    }
-    ${ArticleMetadataFragment}
-`;
-
-export const RETRIEVE_ARTICLE_BY_ID = gql`
-    query ArticleById($id: Int!) {
-        articleById(id: $id) {
-            ...ArticleMetadata
-            url
-            summary(length: 99999)
-            polishedSummary @client
-            content
         }
     }
     ${ArticleMetadataFragment}
@@ -89,11 +67,12 @@ export const LiST_ARTICLES_BY_BLOG = gql`
     query ArticlesByBlog($stableSite: String!) {
         articlesByBlog(stableSite: $stableSite) {
             blog {
-               site
-               author
-               siteName
-               stableSite
-               siteDomain @client
+                site
+                author
+                siteName
+                stableSite
+                siteDomain @client
+                authorName @client
             }
             articles {
                 id
@@ -102,7 +81,7 @@ export const LiST_ARTICLES_BY_BLOG = gql`
                 slug
                 date
             }
-            
+
         }
     }
 `;

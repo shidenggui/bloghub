@@ -37,13 +37,13 @@ const Page = ({article}: { article: IArticleOfClient }) => {
           <header className="mb-4">
             <h1
               className="mt-8 text-xl font-normal text-gray-800 text-justify"
-            >{(article as IArticleOfClient).polishedTitle}</h1>
+            >{article.polishedTitle}</h1>
             <div className="flex">
               <div className="text-sm my-2 ml-auto text-gray-600">
               <span className="text-gray-700">
               <Link href={"/blogs/[stableSite]"} as={`/blogs/${article.blog.stableSite}`}>
                   <a>
-                    {article.blog.author}
+                    {article.blog.authorName}
                   </a>
                 </Link>
             </span>
@@ -70,7 +70,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
               <div className="m-auto text-xs text-gray-500">
                 Jump to&nbsp;
                 <span className="">
-            {(article.blog as IBlogOfClient).siteDomain}
+            {article.blog.siteDomain}
             </span>
               </div>
             </div>
