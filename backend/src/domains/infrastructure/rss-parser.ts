@@ -58,7 +58,7 @@ export class RssParser {
 
   private parseCategory(article: Parser.Item): string[] {
     let categories = article.categories?.filter(t => typeof t === 'string') || []
-    if (!categories.length && article.category?.$.term)
+    if (!categories.length && article.category?.$?.term)
       categories = [article.category?.$.term]
     return categories
   }
