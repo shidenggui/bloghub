@@ -58,8 +58,13 @@ export class RssParser {
 
   private parseCategory(article: Parser.Item): string[] {
     let categories = article.categories?.filter(t => typeof t === 'string') || []
-    if (!categories.length && article.category?.$?.term)
-      categories = [article.category?.$.term]
+    if (!categories.length ) {
+      // for https://beyondstars.xyz/posts/index.xml
+      if (typeof article.category === 'string') categories = [article.category]
+      // for <category term='tag'/>
+      if (article.category?.$?.term) categories = [article.category.$.term]
+    }
+
     return categories
   }
 
