@@ -10,6 +10,7 @@ export class Article {
     public tags: string[],
     public summary: string,
     public content: string,
+    public imgUrl: string | null,
     public date: Date,
     public views: number = 0,
     public createdAt: Date = new Date(),

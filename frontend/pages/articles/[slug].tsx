@@ -1,6 +1,6 @@
 import Layout from '../../components/layout';
 import { withApollo } from '../../libs/with-apollo';
-import { IArticleOfClient, IBlogOfClient, RETRIEVE_ARTICLE_BY_SLUG } from '../../graphql/queries';
+import { IArticleOfClient, RETRIEVE_ARTICLE_BY_SLUG } from '../../graphql/queries';
 import Head from 'next/head';
 import ArticleTwitterCard from '../../components/article-twitter-card';
 import { TimeUtils } from '../../domains/infrastructure/time-utils';
@@ -55,9 +55,14 @@ const Page = ({article}: { article: IArticleOfClient }) => {
             </div>
           </header>
 
-
-          <article className="text-gray-700 leading-relaxed text-justify">
-            {article.polishedSummary}……
+          <article>
+            {article.imgUrl && <img
+              className="mb-2 mx-auto"
+              src={article.imgUrl}
+              alt={`${article.title}的配图`}/>}
+            <div className="text-gray-700 leading-relaxed text-justify">
+              {article.polishedSummary}……
+            </div>
           </article>
         </div>
 

@@ -6,11 +6,9 @@ export default function ArticleTwitterCard({article}: { article: Article }) {
   let card = TwitterCardType.SUMMARY;
   let image = DEFAULT_TWITTER_CARD_IMAGE;
 
-  // Find md image urls
-  const imageRegex: string[] | null = article.content.match(/!\[.*?]\((.*?)\)/);
-  if (imageRegex) {
+  if (article.imgUrl) {
     card = TwitterCardType.SUMMARY_LARGE_IMAGE;
-    image = imageRegex[1];
+    image = article.imgUrl;
   }
   return (
     <TwitterCard card={card} title={article.title} description={article.summary} image={image}/>

@@ -49,14 +49,7 @@ export class RssCrawlService {
 
     await Promise.all(
       rssParseOutput.articles
-        .map(async o => {
-            // try {
-              await this.articleRepository.createOrUpdate(o)
-            // } catch (e) {
-            //   console.log(`Try to create or update ${o.repr()} failed`, e)
-            // }
-          }
-        )
+        .map(async o => await this.articleRepository.createOrUpdate(o))
     )
     this.logger.log(`Crawl ${feed} success`)
   }

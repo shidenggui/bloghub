@@ -41,6 +41,7 @@ export class RssParser {
         this.parseCategory(o),
         this.parseSummary(o),
         o.content?.trim() || o['content:encoded']?.trim() || '',
+        this.parseImgUrl(o),
         this.fixDate(new Date(o.pubDate))
         )
       )
@@ -56,9 +57,16 @@ export class RssParser {
     }
   }
 
+  private parseImgUrl(article: Parser.Item): string | null {
+    const imgUrlRegex = /<img[^>]*? src="(.*?)" [^>]*?>/
+    let imgUrl = article.content?.match(imgUrlRegex)?.[1]
+    if (!imgUrl) imgUrl = article['content:encoded']?.match(imgUrlRegex)?.[1]
+    return imgUrl || null
+  }
+
   private parseCategory(article: Parser.Item): string[] {
     let categories = article.categories?.filter(t => typeof t === 'string') || []
-    if (!categories.length ) {
+    if (!categories.length) {
       // for https://beyondstars.xyz/posts/index.xml
       if (typeof article.category === 'string') categories = [article.category]
       // for <category term='tag'/>

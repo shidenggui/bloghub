@@ -32,6 +32,9 @@ export class ArticleTable {
   @Column('longtext')
   public content: string;
 
+  @Column({length: 2048, nullable: true})
+  public imgUrl: string;
+
   @Column()
   public date: Date;
 
@@ -54,6 +57,7 @@ export class ArticleTable {
       this.tags.split(','),
       this.summary,
       this.content,
+      this.imgUrl,
       this.date,
       this.views,
       this.createdAt,

@@ -13,6 +13,7 @@ export class CreateArticleDto extends BaseDto {
     public tags: string[],
     public summary: string,
     public content: string,
+    public imgUrl: string | null,
     public date: Date,
   ) {
     super()

@@ -56,6 +56,7 @@ export const RETRIEVE_ARTICLE_BY_SLUG = gql`
             ...ArticleMetadata
             url
             summary(length: 99999)
+            imgUrl
             polishedSummary @client
             content
         }
