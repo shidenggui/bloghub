@@ -56,10 +56,18 @@ const Page = ({article}: { article: IArticleOfClient }) => {
           </header>
 
           <article>
-            {article.imgUrl && <img
+            {/*See https://github.com/facebook/react/issues/15446#issuecomment-485163151*/}
+            {article.imgUrl && <div
               className="mb-2 mx-auto"
-              src={article.imgUrl}
-              alt={`${article.title}的配图`}/>}
+              dangerouslySetInnerHTML={{__html: `
+              <img
+                alt="${article.title}的配图"
+                src="${article.imgUrl}"
+                onerror="this.onerror=null;this.style.display='none';"
+              />
+            `}}
+              />}
+
             <div className="text-gray-700 leading-relaxed text-justify">
               {article.polishedSummary}……
             </div>
