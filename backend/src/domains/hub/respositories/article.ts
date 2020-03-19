@@ -1,7 +1,7 @@
 import { Article } from '../models/article';
 import { Injectable, Logger } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { Repository } from 'typeorm';
+import { Not, Repository } from 'typeorm';
 import { CreateArticleDto } from '../dtos/create-article-dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ArticleTable } from '../../../tables/article';
@@ -66,6 +66,14 @@ export class ArticleRepository {
       blog: await this.blogTableRepository.findOne({stableFeed: dto.stableFeed}),
       tags: dto.tags.join(','),
     };
+
+    // Search for duplicate title for article url change
+    const existed = await this.tableRepository
+      .findOne({blog: createArticle.blog, title: createArticle.title, stableUrl: Not(createArticle.stableUrl)})
+    if (existed) {
+      console.log(`Found duplicate title ${createArticle.title} of ${JSON.stringify(createArticle)}`)
+      await this.tableRepository.update({id: existed.id}, createArticle);
+    }
 
     let articleTable = await this.tableRepository.findOne({stableUrl: dto.stableUrl});
     if (!articleTable) {
