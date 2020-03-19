@@ -42,11 +42,6 @@ export class RssCrawlService {
       return
     }
 
-    // Rename author by rss parse output
-    if (rssParseOutput.author) {
-      await this.blogRepository.updateAuthor(feed, rssParseOutput.author)
-    }
-
     await Promise.all(
       rssParseOutput.articles
         .map(async o => await this.articleRepository.createOrUpdate(o))
