@@ -14,7 +14,7 @@ export class RssParser {
       item: [
         'summary',
         'category',
-        // https://pkq.xyz/rss
+        // Example: https://pkq.xyz/rss
         'content:encoded',
       ]
     },
@@ -67,7 +67,7 @@ export class RssParser {
   private parseCategory(article: Parser.Item): string[] {
     let categories = article.categories?.filter(t => typeof t === 'string') || []
     if (!categories.length) {
-      // for https://beyondstars.xyz/posts/index.xml
+      // for <category>tag</category>, example: https://beyondstars.xyz/posts/index.xml
       if (typeof article.category === 'string') categories = [article.category]
       // for <category term='tag'/>
       if (article.category?.$?.term) categories = [article.category.$.term]
