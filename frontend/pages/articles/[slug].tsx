@@ -61,6 +61,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
               className="mb-2 mx-auto"
               dangerouslySetInnerHTML={{__html: `
               <img
+                class="mx-auto"
                 alt="${article.title}的配图"
                 src="${article.imgUrl}"
                 onerror="this.onerror=null;this.style.display='none';"
