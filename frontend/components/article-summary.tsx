@@ -21,7 +21,7 @@ export default function ArticleSummary({article}: { article: IArticleOfClient })
           <div className="p-1 px-2 text-gray-500">
             •
           </div>
-          <Link href={"/blogs/[stableSite]"} as={`/blogs/${article.blog.stableSite}`}>
+          <Link href={"/blogs/[...stableSite]"} as={`/blogs/${article.blog.stableSite}`}>
             <a className="block font-bold text-gray-600" onClick={() => dispatch(setScrollPosition(window.scrollY))}>
               {article.blog.authorName}
             </a>

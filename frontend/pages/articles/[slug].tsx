@@ -41,7 +41,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
             <div className="flex">
               <div className="text-sm my-2 ml-auto text-gray-600">
               <span className="text-gray-700">
-              <Link href={"/blogs/[stableSite]"} as={`/blogs/${article.blog.stableSite}`}>
+              <Link href={"/blogs/[...stableSite]"} as={`/blogs/${article.blog.stableSite}`}>
                   <a>
                     {article.blog.authorName}
                   </a>

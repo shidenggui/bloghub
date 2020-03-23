@@ -60,7 +60,7 @@ Page.getInitialProps = async ({apolloClient, query, res, isServer}) => {
   const {data: {articlesByBlog}} = await apolloClient.query({
     query: LiST_ARTICLES_BY_BLOG,
     variables: {
-      stableSite: query.stableSite,
+      stableSite: (query.stableSite as string[]).join('/'),
     },
   });
   if (!articlesByBlog) {
