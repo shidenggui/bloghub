@@ -64,13 +64,8 @@ export class BlogRepository {
     this.logger.log(`Create blog by ${dto}`)
 
     let blogRecord = await this.tableRepository.findOne({stableSite: dto.stableSite});
-    // Create
     if (!blogRecord) {
-      blogRecord = new BlogTable()
-      blogRecord.author = dto.siteName
-      // This instance is a plain object. So we must use findOne to get class instance latterly
-      blogRecord = await this.tableRepository.save(Object.assign(blogRecord, dto));
-      // Update
+      await this.tableRepository.save(dto);
     } else {
       await this.tableRepository.update({id: blogRecord.id}, dto);
     }
