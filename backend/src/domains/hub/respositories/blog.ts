@@ -65,7 +65,8 @@ export class BlogRepository {
 
     let blogRecord = await this.tableRepository.findOne({stableSite: dto.stableSite});
     if (!blogRecord) {
-      await this.tableRepository.save(dto);
+      blogRecord = new BlogTable()
+      await this.tableRepository.save(Object.assign(blogRecord, dto));
     } else {
       await this.tableRepository.update({id: blogRecord.id}, dto);
     }
