@@ -7,6 +7,7 @@ export const BlogResolver = {
   },
   authorName(blog: Blog): string {
     return blog.author
+      .replace('的小站', '')
       .replace('的网志', '')
       .replace('的博客站', '')
       .replace('的博客', '')
