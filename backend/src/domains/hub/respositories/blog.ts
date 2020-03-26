@@ -46,7 +46,6 @@ export class BlogRepository {
       ?.toModel()
   }
 
-
   async deleteBySite(site: string) {
     const blogRecord = await this.tableRepository.findOne({stableSite: MiscUtils.makeUrlStable(site)})
     if (!blogRecord) {
@@ -54,10 +53,6 @@ export class BlogRepository {
     }
     await this.articleTableRepository.delete({blog: blogRecord})
     await this.tableRepository.delete({id: blogRecord.id})
-  }
-
-  async updateAuthor(feed: string, author: string) {
-    await this.tableRepository.update({stableFeed: MiscUtils.makeUrlStable(feed)}, {author})
   }
 
   async createOrUpdate(dto: CreateBlogDto): Promise<Blog> {

@@ -2,11 +2,13 @@ import { ArticleRepository } from '../../domains/hub/respositories/article';
 import { Args, Parent, Query, ResolveProperty, Resolver } from '@nestjs/graphql';
 import { Article } from '../../domains/hub/models/article';
 import { BlogRepository } from '../../domains/hub/respositories/blog';
+import { ArticleService } from '../../domains/hub/services/article';
 
 @Resolver('Article')
 export class ArticleResolver {
   constructor(
     private readonly articleRepository: ArticleRepository,
+    private readonly articleService: ArticleService,
     private readonly blogRepository: BlogRepository,
   ) {
   }
@@ -19,7 +21,7 @@ export class ArticleResolver {
 
   @Query()
   async articles(@Args('page') page, @Args('size') size) {
-    const articles = await this.articleRepository.list({page, size});
+    const articles = await this.articleService.list({page, size});
 
     const total = await this.articleRepository.count();
     const hasMore = total > (page * size);
