@@ -5,11 +5,11 @@ import { Article } from '../models/article';
 
 @Injectable()
 export class ArticleService {
+  private readonly MAX_ARTICLES_PER_DAY: number = 2
 
   constructor(
     private readonly articleRepository: ArticleRepository,
     private readonly blogRepository: BlogRepository,
-    private readonly MAX_ARTICLES_PER_DAY: number = 2
   ) {
   }
 
