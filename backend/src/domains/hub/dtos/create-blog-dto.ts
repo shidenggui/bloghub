@@ -10,6 +10,7 @@ export class CreateBlogDto extends BaseDto {
     public site: string,
     public siteName: string,
     public feed: string,
+    public ignore: boolean,
   ) {
     super()
     this.stableSite = MiscUtils.makeUrlStable(this.site)

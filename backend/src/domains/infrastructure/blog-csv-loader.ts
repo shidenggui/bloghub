@@ -8,6 +8,7 @@ interface BlogRow {
   Address: string,
   ['RSS feed']: string,
   tags: string
+  Ignore: string
 }
 
 export class BlogCsvLoader {
@@ -30,7 +31,8 @@ export class BlogCsvLoader {
         return new CreateBlogDto(
           r.Address.trim(),
           r.Introduction.trim(),
-          r['RSS feed'].trim()
+          r['RSS feed'].trim(),
+          Boolean(Number.parseInt(r.Ignore))
         )
       })
   }

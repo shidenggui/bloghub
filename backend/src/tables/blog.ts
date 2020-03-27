@@ -24,6 +24,8 @@ export class BlogTable {
   @Column({length: 512})
   public stableFeed: string;
 
+  @Column({default: false})
+  public ignore: boolean;
 
   @CreateDateColumn()
   public createdAt: Date;

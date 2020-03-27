@@ -16,6 +16,7 @@ import { AddBlogFromIssueCommand } from '../commands/add-blog-from-issue';
 import { TestRssCommand } from '../commands/test-rss.command';
 import { TestRssWithSaveCommand } from '../commands/test-rss-with-save.command';
 import { ArticleService } from '../domains/hub/services/article';
+import { ListBlogsCommand } from '../commands/list-blogs.command';
 
 const HubTypeOrmModule = TypeOrmModule.forFeature([BlogTable, ArticleTable]);
 
@@ -36,6 +37,7 @@ const HubTypeOrmModule = TypeOrmModule.forFeature([BlogTable, ArticleTable]);
     AddBlogFromIssueCommand,
     TestRssCommand,
     TestRssWithSaveCommand,
+    ListBlogsCommand,
   ],
   exports: [
     HubTypeOrmModule,

@@ -32,7 +32,8 @@ export class BlogRepository {
 
   async list({page = 1, size = Number.MAX_SAFE_INTEGER}): Promise<Blog[]> {
     const blogRecords = await this.tableRepository
-      .createQueryBuilder()
+      .createQueryBuilder('blog')
+      .where('blog.ignore = false')
       .orderBy('createdAt', 'DESC')
       .offset((page - 1) * size)
       .limit(size)
@@ -44,6 +45,16 @@ export class BlogRepository {
     return (await this.tableRepository
       .findOne({stableSite}))
       ?.toModel()
+  }
+
+  async toggleBlogIgnoreBySite(site: string): Promise<boolean | null> {
+    const blogRecord = await this.tableRepository.findOne({stableSite: MiscUtils.makeUrlStable(site)})
+    if (!blogRecord) {
+      return null
+    }
+    blogRecord.ignore = !blogRecord.ignore
+    await this.tableRepository.save(blogRecord)
+    return blogRecord.ignore
   }
 
   async deleteBySite(site: string) {
