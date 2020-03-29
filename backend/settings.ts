@@ -16,6 +16,8 @@ export const DATABASE_HOST = process.env.DATABASE_HOST || '127.0.0.1'
 export const DATABASE_PORT = Number.parseInt(process.env.DATABASE_PORT) || 3306
 export const DATABASE_USERNAME = process.env.DATABASE_USERNAME || 'root'
 export const DATABASE_PASSWORD = process.env.DATABASE_PASSWORD || 'mysql'
+export const FILTER_KEYWORDS = process.env.FILTER_KEYWORDS.split(',') || ['欢迎使用 Typecho']
+console.log({FILTER_KEYWORDS})
 
 console.log('Database config: ', JSON.stringify({
   DATABASE_TYPE,

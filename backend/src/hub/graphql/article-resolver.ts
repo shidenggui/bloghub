@@ -44,7 +44,7 @@ export class ArticleResolver {
     if (!blog) {
       return null
     }
-    const articles = await this.articleRepository.listAllByBlog(blog.id)
+    const articles = await this.articleService.listAllByBlog(blog.id)
     return {
       blog,
       articles
