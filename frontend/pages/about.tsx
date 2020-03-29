@@ -9,6 +9,7 @@ export default function About() {
       <Head>
         <title key="title">About</title>
         <link rel="canonical" href={`${BASE_HOST}/about`} key="canonical"/>
+        <meta name="robots" content="noindex"/>
       </Head>
       <div className="my-12">
         <Markdown source={ABOUT_PAGE}/>
