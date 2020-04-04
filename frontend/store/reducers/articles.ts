@@ -1,15 +1,17 @@
-import { NEXT_PAGE, ADD_ARTICLES, SET_SCROLL_POSITION } from '../actions';
+import { NEXT_PAGE, ADD_ARTICLES, SET_SCROLL_POSITION, CHANGE_TAG } from '../actions';
 import { IArticleOfClient } from '../../graphql/queries';
+import { TAG } from '../../domains/bloghub/constants';
 
 interface ArticlesState {
   articles: IArticleOfClient[]
   page: number
   targetPage: number
   scrollPosition: number
+  tag: string
 }
 
 
-const articles = (state: ArticlesState = {articles: [], page: 0, targetPage: 0, scrollPosition: 0}
+const articles = (state: ArticlesState = {tag: TAG.DEFAULT, articles: [], page: 0, targetPage: 0, scrollPosition: 0}
   , action) => {
   switch (action.type) {
     case ADD_ARTICLES:
@@ -32,7 +34,11 @@ const articles = (state: ArticlesState = {articles: [], page: 0, targetPage: 0, 
         ...state,
         scrollPosition: action.scrollPosition
       }
-
+    case CHANGE_TAG:
+      return {
+        ...state,
+        tag: action.tag
+      }
     default:
       return state
   }

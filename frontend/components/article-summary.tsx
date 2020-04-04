@@ -11,7 +11,7 @@ export default function ArticleSummary({article}: { article: IArticleOfClient })
   return (
     <Link href={"/articles/[slug]"} as={`/articles/${article.slug}`}>
 
-      <section className="py-4 first:pt-0 border-t first:border-t-0 text-gray-700 cursor-pointer tracking-wide"
+      <section className="py-2 first:pt-0 border-t first:border-t-0 text-gray-700 cursor-pointer tracking-wide"
                onClick={() => dispatch(setScrollPosition(window.scrollY))}
       >
         <header className="flex my-2 items-center text-xs">
