@@ -16,7 +16,7 @@ export default function ArticleSummary({article}: { article: IArticleOfClient })
       >
         <header className="flex my-2 items-center text-xs">
           <div className="p-1 bg-gray-200 leading-tight text-gray-600 rounded-sm">
-            {article.tags[0] || '无题'}
+            {decodeURIComponent(article.tags[0] || '无题')}
           </div>
           <div className="p-1 px-2 text-gray-500">
             •
