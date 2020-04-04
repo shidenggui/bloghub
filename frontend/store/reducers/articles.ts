@@ -11,7 +11,7 @@ interface ArticlesState {
 }
 
 
-const articles = (state: ArticlesState = {tag: TAG.DEFAULT, articles: [], page: 0, targetPage: 0, scrollPosition: 0}
+const articles = (state: ArticlesState = {tag: TAG.DISCOVER, articles: [], page: 0, targetPage: 0, scrollPosition: 0}
   , action) => {
   switch (action.type) {
     case ADD_ARTICLES:

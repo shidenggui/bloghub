@@ -1,5 +1,5 @@
 export const TAG = {
-  DEFAULT: '默认',
+  DISCOVER: '发现',
   TECH: '技术',
   ALL: '全部',
 }
