@@ -8,11 +8,14 @@ import { ArticlesResponse } from '../../graphql/graphql';
 import TwitterCard from '../components/twitter-card';
 import { BASE_HOST, HOME_PAGE_SIZE } from '../settings';
 import { useDispatch, useSelector } from 'react-redux'
-import { addArticles, nextPage, setScrollPosition } from '../store/actions';
+import { addArticles, changeTag, nextPage, setScrollPosition } from '../store/actions';
 import { useState } from 'react';
+import { TagService } from '../domains/bloghub/services/tag';
+import { TAG } from '../domains/bloghub/constants';
 
 const Page = () => {
   const storeArticles: IArticleOfClient[] = useSelector(state => state.articles.articles)
+  const storeTag: string = useSelector(state => state.articles.tag)
   const storeTargetPage: number = useSelector(state => state.articles.targetPage)
   const storePage: number = useSelector(state => state.articles.page)
   const storeScrollToPosition: number = useSelector(state => state.articles.scrollPosition)
@@ -50,9 +53,19 @@ const Page = () => {
                      description={'一群自由而有趣的灵魂，终将在此相遇'}
         />
       </Head>
+      <div className="flex">
+        {Object.values(TAG)
+          .map(t =>
+            <div
+              className={`mr-6 px-1 leading-relaxed text-sm ${t === storeTag? 'text-red-700 border-orange-200 border-b-2 border-solid border-black ': 'text-gray-600'}`}
+              onClick={() => dispatch(changeTag(t))}>{t}</div>
+          )}
+      </div>
 
-      <div className="my-12">
-        {storeArticles.map(a => (
+      <div className="mb-12 mt-6">
+        {storeArticles
+          .filter(TagService.filterByTag(storeTag))
+          .map(a => (
           <ArticleSummary article={a as any} key={a.id}/>
         ))}
         {hasMore &&
