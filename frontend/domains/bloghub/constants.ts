@@ -30,7 +30,9 @@ export const TECH_KEYWORDS = [
   'davinci',
   'wordpress',
   'pingos',
-  'luogu p'
+  'luogu p',
+  'css',
+  'vs code',
 ]
 
 
