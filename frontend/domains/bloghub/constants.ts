@@ -33,6 +33,8 @@ export const TECH_KEYWORDS = [
   'luogu p',
   'css',
   'vs code',
+  'django',
+  'bzoj',
 ]
 
 
