@@ -35,6 +35,8 @@ export const TECH_KEYWORDS = [
   'vs code',
   'django',
   'bzoj',
+  'ide',
+  'svg',
 ]
 
 
