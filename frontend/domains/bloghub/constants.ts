@@ -44,6 +44,7 @@ export const TECH_KEYWORDS = [
   'office',
   'linux',
   'bash',
+  'html5',
 ]
 
 
