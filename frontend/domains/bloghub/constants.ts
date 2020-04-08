@@ -37,6 +37,13 @@ export const TECH_KEYWORDS = [
   'bzoj',
   'ide',
   'svg',
+  'h5',
+  'sql',
+  'avif',
+  'matlab',
+  'office',
+  'linux',
+  'bash',
 ]
 
 
