@@ -45,6 +45,7 @@ export const TECH_KEYWORDS = [
   'linux',
   'bash',
   'html5',
+  'k8s',
 ]
 
 
