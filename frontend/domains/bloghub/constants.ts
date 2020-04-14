@@ -68,6 +68,11 @@ export const TECH_KEYWORDS = [
   '自签发证书',
   'c++',
   'etcd',
+  '钉钉',
+  'halo',
+  '线程',
+  'git',
+  'disqus',
 ]
 
 
