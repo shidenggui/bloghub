@@ -29,7 +29,9 @@ export default function ArticleSummary({article}: { article: IArticleOfClient })
         </header>
 
         <h2 className="my-2 text-gray-700 text-base text-justify active:text-red-700">
-          <a>{MiscUtils.adjustSpace(article.polishedTitle)}</a>
+          <Link href={"/articles/[slug]"} as={`/articles/${article.slug}`}>
+            <a>{MiscUtils.adjustSpace(article.polishedTitle)}</a>
+          </Link>
         </h2>
 
 
