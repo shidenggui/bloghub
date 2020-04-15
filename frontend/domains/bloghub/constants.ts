@@ -73,6 +73,7 @@ export const TECH_KEYWORDS = [
   '线程',
   'git',
   'disqus',
+  'mp3',
 ]
 
 
