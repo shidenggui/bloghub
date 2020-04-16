@@ -74,6 +74,8 @@ export const TECH_KEYWORDS = [
   'git',
   'disqus',
   'mp3',
+  'netlify',
+  'zeit',
 ]
 
 
