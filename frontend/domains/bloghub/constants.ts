@@ -76,6 +76,8 @@ export const TECH_KEYWORDS = [
   'mp3',
   'netlify',
   'zeit',
+  '皇后问题',
+  '数独问题',
 ]
 
 
