@@ -78,6 +78,10 @@ export const TECH_KEYWORDS = [
   'zeit',
   '皇后问题',
   '数独问题',
+  '限时',
+  'es6',
+  'vps',
+  '灰度发布',
 ]
 
 
