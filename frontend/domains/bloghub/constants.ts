@@ -82,6 +82,11 @@ export const TECH_KEYWORDS = [
   'es6',
   'vps',
   '灰度发布',
+  'jdk',
+  'appium',
+  'go mod',
+  '爬虫框架',
+  '闭包',
 ]
 
 
