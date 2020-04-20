@@ -87,6 +87,7 @@ export const TECH_KEYWORDS = [
   'go mod',
   '爬虫框架',
   '闭包',
+  'markdown',
 ]
 
 
