@@ -88,6 +88,14 @@ export const TECH_KEYWORDS = [
   '爬虫框架',
   '闭包',
   'markdown',
+  'gdb',
+  'curl',
+  'iterm2',
+  'shell',
+  'airflow',
+  '宝塔面板',
+  '世界，您好！',
+  'paxos',
 ]
 
 
