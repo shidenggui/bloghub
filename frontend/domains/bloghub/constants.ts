@@ -96,6 +96,21 @@ export const TECH_KEYWORDS = [
   '宝塔面板',
   '世界，您好！',
   'paxos',
+  'kafka',
+  'go 语言',
+  '开发者工具',
+  'opengl',
+  'springmvc',
+  'jenkins',
+  'jquery',
+  '虚拟机',
+  'netty',
+  '终端工具',
+  'kubernetes',
+  'npm',
+  'vue',
+  'debian',
+  'tensorflow',
 ]
 
 
