@@ -111,6 +111,17 @@ export const TECH_KEYWORDS = [
   'vue',
   'debian',
   'tensorflow',
+  'utools',
+  '静态博客',
+  'observedobject',
+  '分区表',
+  'event loop',
+  'storyboard',
+  'goland',
+  'ethtool',
+  'rocketmq',
+  'ansible',
+  '设计模式',
 ]
 
 
