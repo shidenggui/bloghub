@@ -122,6 +122,9 @@ export const TECH_KEYWORDS = [
   'rocketmq',
   'ansible',
   '设计模式',
+  '单元测试',
+  'istio',
+  '分布式系统',
 ]
 
 
