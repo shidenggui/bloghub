@@ -6,7 +6,7 @@ import ArticleTwitterCard from '../../components/article-twitter-card';
 import { TimeUtils } from '../../domains/infrastructure/time-utils';
 import { ArticleJsonLd } from 'next-seo';
 import Link from 'next/link';
-import { BASE_HOST, DEFAULT_TWITTER_CARD_IMAGE } from '../../settings';
+import { BASE_HOST, DEFAULT_TWITTER_CARD_IMAGE, WWADS } from '../../settings';
 import Error from 'next/error';
 
 const Page = ({article}: { article: IArticleOfClient }) => {
@@ -90,6 +90,9 @@ const Page = ({article}: { article: IArticleOfClient }) => {
             </div>
           </a>
         </footer>
+
+        {WWADS && <div className="flex my-2"><div className="wwads-cn" data-id="51" data-size="300x250"></div></div>}
+
       </section>
     </Layout>
   );

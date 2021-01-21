@@ -57,6 +57,7 @@ const Page = () => {
         {Object.values(TAG)
           .map(t =>
             <div
+              key={t}
               className={`mr-6 px-1 leading-relaxed cursor-pointer ${t === storeTag? 'text-red-700 border-orange-200 border-b-2 border-solid border-black ': 'text-gray-600'}`}
               onClick={() => dispatch(changeTag(t as string))}>{t}</div>
           )}

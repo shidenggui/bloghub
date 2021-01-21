@@ -5,6 +5,7 @@ export const CDN_HOST = ''
 export const GRAPHQL_API = process.env.NODE_ENV === 'production' ? `${BASE_HOST}/graphql` : 'http://localhost:3000/graphql';
 
 export const BAIDU_ANALYTIC = ''
+export const WWADS = ''
 
 export const HOME_PAGE_SIZE = 20;
 
