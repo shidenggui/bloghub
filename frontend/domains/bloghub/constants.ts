@@ -125,6 +125,17 @@ export const TECH_KEYWORDS = [
   '单元测试',
   'istio',
   '分布式系统',
+  'html',
+  '安卓',
+  'promisify',
+  'tar.xz',
+  'nas',
+  'chmod',
+  'centos',
+  'ubuntu',
+  'raspberry',
+  '指令集',
+  'macos'
 ]
 
 
