@@ -91,7 +91,7 @@ const Page = ({article}: { article: IArticleOfClient }) => {
           </a>
         </footer>
 
-        {WWADS && <div className="flex my-2"><div className="wwads-cn" data-id="51" data-size="300x250"></div></div>}
+        {WWADS && <div className="text-center my-2"><div className="wwads-cn" data-id="51" data-size="300x250"></div></div>}
 
       </section>
     </Layout>
