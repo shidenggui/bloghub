@@ -135,7 +135,16 @@ export const TECH_KEYWORDS = [
   'ubuntu',
   'raspberry',
   '指令集',
-  'macos'
+  'macos',
+  'json',
+  'hashmap',
+  '腾讯云',
+  '服务端',
+  '远程端口',
+  'nginx',
+  'dart',
+  'script',
+  'fedora'
 ]
 
 
