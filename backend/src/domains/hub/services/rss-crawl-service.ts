@@ -34,18 +34,17 @@ export class RssCrawlService {
   async crawl(feed: string) {
     this.logger.log(`Start to crawl ${feed}`)
 
-    let rssParseOutput = null;
     try {
-      rssParseOutput = await this.rssParser.fetch(feed);
+      const rssParseOutput = await this.rssParser.fetch(feed);
+
+      await Promise.all(
+        rssParseOutput.articles
+          .map(async o => await this.articleRepository.createOrUpdate(o))
+      )
     } catch (e) {
       console.log(`Fetch rss ${feed} error`, e)
       return
     }
-
-    await Promise.all(
-      rssParseOutput.articles
-        .map(async o => await this.articleRepository.createOrUpdate(o))
-    )
     this.logger.log(`Crawl ${feed} success`)
   }
 
