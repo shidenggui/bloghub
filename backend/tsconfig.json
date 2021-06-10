@@ -4,6 +4,7 @@
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
+    "skipLibCheck": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "target": "es2017",

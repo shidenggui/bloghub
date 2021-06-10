@@ -14,11 +14,11 @@ import { TagService } from '../domains/bloghub/services/tag';
 import { TAG } from '../domains/bloghub/constants';
 
 const Page = () => {
-  const storeArticles: IArticleOfClient[] = useSelector(state => state.articles.articles)
-  const storeTag: string = useSelector(state => state.articles.tag)
-  const storeTargetPage: number = useSelector(state => state.articles.targetPage)
-  const storePage: number = useSelector(state => state.articles.page)
-  const storeScrollToPosition: number = useSelector(state => state.articles.scrollPosition)
+  const storeArticles: IArticleOfClient[] = useSelector(state => (state as any).articles.articles)
+  const storeTag: string = useSelector(state => (state as any).articles.tag)
+  const storeTargetPage: number = useSelector(state => (state as any).articles.targetPage)
+  const storePage: number = useSelector(state => (state as any).articles.page)
+  const storeScrollToPosition: number = useSelector(state => (state as any).articles.scrollPosition)
   const [hasMore, setHasMore] = useState(true)
   const dispatch = useDispatch()
   const shouldRefresh = storePage !== storeTargetPage;

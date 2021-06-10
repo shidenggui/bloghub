@@ -68,9 +68,9 @@ export class RssParser {
     let categories = article.categories?.filter(t => typeof t === 'string') || []
     if (!categories.length) {
       // for <category>tag</category>, example: https://beyondstars.xyz/posts/index.xml
-      if (typeof article.category === 'string') categories = [article.category]
+      if (typeof (article as any).category === 'string') categories = [(article as any).category]
       // for <category term='tag'/>
-      if (article.category?.$?.term) categories = [article.category.$.term]
+      if ((article as any).category?.$?.term) categories = [(article as any).category.$.term]
     }
 
     return categories
