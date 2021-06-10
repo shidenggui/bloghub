@@ -38,7 +38,7 @@
     "@types/js-yaml": "^3.12.2",
     "@types/rss": "^0.0.28",
     "apollo-server-express": "^2.10.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "graphql": "^14.6.0",
     "graphql-iso-date": "^3.6.1",
